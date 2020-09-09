@@ -1,0 +1,86 @@
+<div class="row m-0 justify-content-center">
+    <form [formGroup]="visitorLog" class="border p-5">
+        <div class="text-center font-weight-bold h1 mb-4">Vistor Form</div>
+        <div class="row">
+            <div class="form-group col-6">
+                <mat-form-field id="name">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" formControlName="name" required> <br> <br>
+                    <!-- <mat-error *ngIf="enquiryForm.get('projectTitle').invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+
+            <div class="form-group col-6">
+                <mat-form-field id="personToVisit">
+                    <mat-label>Person To Visit</mat-label>
+                    <input matInput type="text" formControlName="personToVisit" required> <br> <br>
+                    <!-- <mat-error *ngIf="enquiryForm.get('projectTitle').invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+        </div>
+
+
+        <div class="form-group radio-button-con">
+            <div class="mb-3"> Type Of Visit</div>
+            <mat-radio-group aria-label="Type Of Visit" formControlName="visitType">
+                <mat-radio-button class="mr-3" value="meeting">Meeting</mat-radio-button>
+                <mat-radio-button class="mr-3" value="delivery">Delivery</mat-radio-button>
+                <mat-radio-button class="mr-3" value="personal">Personal</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-6">
+                <mat-form-field>
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" class="pb-3" formControlName="email" required>
+                    <!-- <mat-error *ngIf="this.visitorLog.get('projectTitle').invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+
+
+            <div class="form-group col-6">
+                <mat-form-field id="mat-date-pick">
+                    <mat-label> Enquiry Date</mat-label><br>
+                    <input matInput [matDatepicker]="enquiryDatePicker" formControlName="dateOfEnquiry" required>
+                    <mat-datepicker-toggle matSuffix [for]="enquiryDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #enquiryDatePicker></mat-datepicker>
+                    <!-- <mat-error *ngIf="enquiryForm.get('dateOfEnquiry').invalid">{{getDateErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-6">
+                <mat-form-field id="timeOfEntry">
+                    <mat-label>Time Of Entry</mat-label>
+                    <input matInput type="number" formControlName="timeOfEntry" required> <br> <br>
+                    <!-- <mat-error *ngIf="enquiryForm.get('projectTitle').invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+
+            <div class="form-group col-6">
+                <mat-form-field id="timeOfExit">
+                    <mat-label>Time Of Exit</mat-label>
+                    <input matInput type="number" formControlName="timeOfExit" required> <br> <br>
+                    <!-- <mat-error *ngIf="enquiryForm.get('projectTitle').invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="m-3">
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                    <mat-button-toggle value="discard" (click)="submit()">Submit</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div class="m-3">
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                    <mat-button-toggle value="discard" [routerLink]="['']">cancel</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+        </div>
+    </form>
+</div>
