@@ -17,9 +17,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { NewsListComponent } from './news-list/news-list.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
-  declarations: [AppComponent, VisitorListComponent, VisitorEntryFormComponent],
+  declarations: [
+    AppComponent,
+    VisitorListComponent,
+    VisitorEntryFormComponent,
+    NewsListComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,6 +42,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonToggleModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

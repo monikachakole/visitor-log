@@ -6,27 +6,33 @@
                 <mat-form-field id="name">
                     <mat-label>Name</mat-label>
                     <input matInput type="text" formControlName="name" required> <br> <br>
-                    <!-- <mat-error *ngIf="enquiryForm.get('projectTitle').invalid">{{getErrorMessage()}}</mat-error> -->
                 </mat-form-field>
+                <div *ngIf="!visitorLog.get('name').valid && (visitorLog.get('name').touched || userSubmit)"
+                    class="text-danger"> Enter Name</div>
             </div>
 
             <div class="form-group col-6">
                 <mat-form-field id="personToVisit">
                     <mat-label>Person To Visit</mat-label>
                     <input matInput type="text" formControlName="personToVisit" required> <br> <br>
-                    <!-- <mat-error *ngIf="enquiryForm.get('projectTitle').invalid">{{getErrorMessage()}}</mat-error> -->
                 </mat-form-field>
+                <div *ngIf="!visitorLog.get('personToVisit').valid && (visitorLog.get('personToVisit').touched || userSubmit)"
+                    class="text-danger"> Enter Person
+                    Name</div>
             </div>
         </div>
 
 
         <div class="form-group radio-button-con">
-            <div class="mb-3"> Type Of Visit</div>
+            <div class="mb-3"> Type Of Visit*</div>
             <mat-radio-group aria-label="Type Of Visit" formControlName="visitType">
                 <mat-radio-button class="mr-3" value="meeting">Meeting</mat-radio-button>
                 <mat-radio-button class="mr-3" value="delivery">Delivery</mat-radio-button>
                 <mat-radio-button class="mr-3" value="personal">Personal</mat-radio-button>
             </mat-radio-group>
+            <div *ngIf="!visitorLog.get('visitType').valid && (visitorLog.get('visitType').touched || userSubmit)"
+                class="text-danger"> Select Visit Type
+            </div>
         </div>
 
         <div class="row">
@@ -34,18 +40,18 @@
                 <mat-form-field>
                     <mat-label>Enter your email</mat-label>
                     <input matInput placeholder="pat@example.com" class="pb-3" formControlName="email" required>
-                    <!-- <mat-error *ngIf="this.visitorLog.get('projectTitle').invalid">{{getErrorMessage()}}</mat-error> -->
                 </mat-form-field>
+                <div *ngIf="!visitorLog.get('email').valid && (visitorLog.get('email').touched || userSubmit)"
+                    class="text-danger"> Enter Email Id</div>
             </div>
 
 
             <div class="form-group col-6">
                 <mat-form-field id="mat-date-pick">
-                    <mat-label> Enquiry Date</mat-label><br>
-                    <input matInput [matDatepicker]="enquiryDatePicker" formControlName="dateOfEnquiry" required>
-                    <mat-datepicker-toggle matSuffix [for]="enquiryDatePicker"></mat-datepicker-toggle>
-                    <mat-datepicker #enquiryDatePicker></mat-datepicker>
-                    <!-- <mat-error *ngIf="enquiryForm.get('dateOfEnquiry').invalid">{{getDateErrorMessage()}}</mat-error> -->
+                    <mat-label> Entry Date</mat-label><br>
+                    <input matInput [matDatepicker]="entryDatePicker" [formControl]="presentDate" disabled>
+                    <mat-datepicker-toggle matSuffix [for]="entryDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #entryDatePicker></mat-datepicker>
                 </mat-form-field>
             </div>
         </div>
@@ -54,16 +60,14 @@
             <div class="form-group col-6">
                 <mat-form-field id="timeOfEntry">
                     <mat-label>Time Of Entry</mat-label>
-                    <input matInput type="number" formControlName="timeOfEntry" required> <br> <br>
-                    <!-- <mat-error *ngIf="enquiryForm.get('projectTitle').invalid">{{getErrorMessage()}}</mat-error> -->
+                    <input matInput type="text" formControlName="timeOfEntry"> <br> <br>
                 </mat-form-field>
             </div>
 
             <div class="form-group col-6">
                 <mat-form-field id="timeOfExit">
                     <mat-label>Time Of Exit</mat-label>
-                    <input matInput type="number" formControlName="timeOfExit" required> <br> <br>
-                    <!-- <mat-error *ngIf="enquiryForm.get('projectTitle').invalid">{{getErrorMessage()}}</mat-error> -->
+                    <input matInput type="text" formControlName="timeOfExit"> <br> <br>
                 </mat-form-field>
             </div>
         </div>
@@ -77,7 +81,7 @@
 
             <div class="m-3">
                 <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                    <mat-button-toggle value="discard" [routerLink]="['']">cancel</mat-button-toggle>
+                    <mat-button-toggle value="discard" [routerLink]="['/list']">cancel</mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 

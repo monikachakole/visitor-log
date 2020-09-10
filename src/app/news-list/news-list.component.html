@@ -1,0 +1,14 @@
+<h1 class="text-center mt-4 font-weight-bold"> News List </h1>
+
+<div class="row justify-content-center">
+    <div *ngFor="let list of newsList" class="card p-4 m-1" style="width: 22rem;">
+        <img class="card-img-top " src="{{list.urlToImage}}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{list.source.name}}</h5>
+            <h5 class="card-title">{{list.author}}</h5>
+            <h6 class="card-text font-weight-bold">{{list.title}}</h6>
+            <p class="card-subtitle mb-2 text-muted">{{list.description}}</p>
+            <a href="{{list.url}}" class="btn btn-primary">See Detail</a>
+        </div>
+    </div>
+</div>

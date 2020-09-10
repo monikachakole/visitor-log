@@ -1,19 +1,50 @@
-<h1 class="text-center mt-4 font-weight-bold"> News List </h1>
-<div class="row justify-content-end m-0 w-75">
+<div class="text-right mb-3">
     <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
         <mat-button-toggle value=" discard" [routerLink]="['/form']">Add New Visitor</mat-button-toggle>
     </mat-button-toggle-group>
 </div>
 
-<div class="row justify-content-center">
-    <div *ngFor="let list of newsList" class="card p-4 m-4" style="width: 22rem;">
-        <img class="card-img-top " src="{{list.urlToImage}}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{list.source.name}}</h5>
-            <h5 class="card-title">{{list.author}}</h5>
-            <h6 class="card-text font-weight-bold">{{list.title}}</h6>
-            <p class="card-subtitle mb-2 text-muted">{{list.description}}</p>
-            <a href="{{list.url}}" class="btn btn-primary">See Detail</a>
-        </div>
-    </div>
+<div *ngIf="vistorNotAvailable" class="text-center h1">No Visitor Available</div>
+
+<div *ngIf="vistorAvailable">
+    <mat-table [dataSource]="retrievedVisitorList" class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let retrievedVisitorList"> {{retrievedVisitorList.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="personToVisit">
+            <mat-header-cell *matHeaderCellDef> Person To Visit </mat-header-cell>
+            <mat-cell *matCellDef="let retrievedVisitorList"> {{retrievedVisitorList.personToVisit}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="visitType">
+            <mat-header-cell *matHeaderCellDef> Visit Type </mat-header-cell>
+            <mat-cell *matCellDef="let retrievedVisitorList"> {{retrievedVisitorList.visitType}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef> Email Id</mat-header-cell>
+            <mat-cell *matCellDef="let retrievedVisitorList"> {{retrievedVisitorList.email}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="entryDate">
+            <mat-header-cell *matHeaderCellDef> Entry Date </mat-header-cell>
+            <mat-cell *matCellDef="let retrievedVisitorList"> {{retrievedVisitorList.dateOfEntry | date}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="entryTime">
+            <mat-header-cell *matHeaderCellDef> Entry Time </mat-header-cell>
+            <mat-cell *matCellDef="let retrievedVisitorList"> {{retrievedVisitorList.timeOfEntry}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="exitTime">
+            <mat-header-cell *matHeaderCellDef> Exit Time </mat-header-cell>
+            <mat-cell *matCellDef="let retrievedVisitorList"> {{retrievedVisitorList.timeOfExit}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
 </div>
